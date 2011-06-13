@@ -3,7 +3,13 @@
 var smtp = require('smtp')
 var fs = require('fs')
 var sys = require('sys')
-var mailbox = require('mailbox')
+try {
+	var mailbox = require('mailbox')
+} catch(e) {
+	console.log(e.message)
+	console.log("install mailbox with `npm install mailbox` to run this demo")
+	console.log(e.stack.join("\n"))
+}
 
 var destination = new mailbox.Maildir('test')
 
